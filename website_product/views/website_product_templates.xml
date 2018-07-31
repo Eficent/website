@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="product_page" name="Product Page">
+    <t t-call="website.layout">
+        <div id="wrap">
+            <div class="oe_structure"/>
+            <div class="container">
+                <div class="row">
+                    <t t-call="website_product.product_detail"/>
+                </div>
+            </div>
+            <div class="oe_structure"/>
+        </div>
+    </t>
+</template>
+
+<template id="product_detail" name="Product Details">
+    <h1 class="col-md-12 text-center" id="product_name" t-field="product.display_name"/>
+    <div class="col-md-4">
+        <div t-field="product.image" t-options='{"widget": "image", "class": "center-block mb16"}'/>
+        <t t-raw="left_column or ''"/>
+    </div>
+    <div class="col-md-8 mt32">
+        <t t-if="product">
+            <div t-field="product.website_description"/>
+        </t>
+        <t t-raw="right_column or ''"/>
+    </div>
+</template>
+</odoo>
