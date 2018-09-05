@@ -15,7 +15,7 @@
 </template>
 
 <template id="product_detail" name="Product Details">
-    <h1 class="col-md-12 text-center" id="product_name" t-field="product.display_name"/>
+    <h1 class="col-md-12 text-center" id="product_name" t-field="product.name"/>
     <div class="col-md-4">
         <div t-field="product.image" t-options='{"widget": "image", "class": "center-block mb16"}'/>
         <t t-raw="left_column or ''"/>
