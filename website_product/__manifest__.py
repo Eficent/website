@@ -10,7 +10,7 @@
     'author': 'Eficent, '
               'Odoo Community Association (OCA)',
     'website': "https://github.com/OCA/website",
-    'depends': ['website_sale'],
+    'depends': ['product', 'website', 'stock'],
     'data': [
         'views/website_product_templates.xml',
         'views/product_views.xml',

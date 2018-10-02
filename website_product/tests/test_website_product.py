@@ -9,8 +9,10 @@ from ..controllers.main import WebsiteProductPage
 
 class TestController(SavepointCase):
 
-    def setUp(cls, *args, **kwargs):
-        super(TestController, cls).setUp(*args, **kwargs)
+    @classmethod
+    def setUpClass(cls, *args, **kwargs):
+        super(TestController, cls).setUpClass(*args, **kwargs)
+        cls.env = cls.env(context=dict(cls.env.context, tracking_disable=True))
         cls.uom_unit = cls.env.ref('product.product_uom_unit')
 
         cls.product_sale_ok = cls.env['product.template'].create({
@@ -29,8 +31,8 @@ class TestController(SavepointCase):
 
     def test_compute_website_url(self):
         """Test website_url from product.templates if sellable or not."""
-        self.assertTrue('/shop/product' in self.product_sale_ok.website_url)
-        self.assertFalse('/shop/' in self.product_no_sale.website_url)
+        self.assertTrue('/product/' in self.product_no_sale.website_url)
+        self.assertFalse('/product/' in self.product_sale_ok.website_url)
 
     @patch('odoo.addons.website_product.'
            'controllers.main.request')
@@ -57,16 +59,3 @@ class TestController(SavepointCase):
         ctrl = WebsiteProductPage()
         response = ctrl.products_detail(self.product_no_sale)
         self.assertTrue('request.render()' in str(response.name))
-
-    @patch('odoo.addons.website_product.'
-           'controllers.main.request')
-    @patch('odoo.http.request')
-    def test_request_no_product(self, request, request2):
-        """Test controller for product_id not found"""
-        # Mock
-        request.env = self.env
-        request2.env = self.env
-
-        ctrl = WebsiteProductPage()
-        response = ctrl.products_detail(False)
-        self.assertTrue('request.not_found()' in str(response.name))
