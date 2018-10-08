@@ -18,12 +18,10 @@ class ProductTemplate(models.Model):
 
     @api.multi
     def _compute_website_url(self):
-        super(ProductTemplate, self)._compute_website_url()
         # If the product cannot be sold, then use the new form view.
         # Otherwise, use the defult URL from website_sale, which will
         # redirect the user to the shop.
-        for product in self.filtered(
-                lambda p: not p.sale_ok):
+        for product in self:
             if product.sale_ok:
                 continue
             product.website_url = "/product/%s" % slug(product)

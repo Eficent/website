@@ -10,8 +10,8 @@ from ..controllers.main import WebsiteProductPage
 class TestController(SavepointCase):
 
     @classmethod
-    def setUpClass(cls, *args, **kwargs):
-        super(TestController, cls).setUpClass(*args, **kwargs)
+    def setUpClass(cls):
+        super(TestController, cls).setUpClass()
         cls.env = cls.env(context=dict(cls.env.context, tracking_disable=True))
         cls.uom_unit = cls.env.ref('product.product_uom_unit')
 
@@ -32,7 +32,7 @@ class TestController(SavepointCase):
     def test_compute_website_url(self):
         """Test website_url from product.templates if sellable or not."""
         self.assertTrue('/product/' in self.product_no_sale.website_url)
-        self.assertFalse('/product/' in self.product_sale_ok.website_url)
+        self.assertFalse(self.product_sale_ok.website_url)
 
     @patch('odoo.addons.website_product.'
            'controllers.main.request')
