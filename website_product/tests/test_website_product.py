@@ -36,12 +36,10 @@ class TestController(SavepointCase):
 
     @patch('odoo.addons.website_product.'
            'controllers.main.request')
-    @patch('odoo.http.request')
-    def test_request_product_sale_ok(self, request, request2):
+    def test_request_product_sale_ok(self, request):
         """Test controller for salable product"""
         # Mock
         request.env = self.env
-        request2.env = self.env
 
         ctrl = WebsiteProductPage()
         response = ctrl.products_detail(self.product_sale_ok)
@@ -49,12 +47,10 @@ class TestController(SavepointCase):
 
     @patch('odoo.addons.website_product.'
            'controllers.main.request')
-    @patch('odoo.http.request')
-    def test_request_product_no_sale(self, request, request2):
+    def test_request_product_no_sale(self, request):
         """Test controller for not salable product"""
         # Mock
         request.env = self.env
-        request2.env = self.env
 
         ctrl = WebsiteProductPage()
         response = ctrl.products_detail(self.product_no_sale)

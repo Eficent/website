@@ -2,7 +2,7 @@
 <odoo>
 <template id="product_page" name="Product Page">
     <t t-call="website.layout">
-        <div id="wrap">
+        <div id="wrap" class="product-page">
             <div class="oe_structure"/>
             <div class="container">
                 <div class="row">
