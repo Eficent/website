@@ -10,12 +10,12 @@
     'author': 'Eficent, '
               'Odoo Community Association (OCA)',
     'website': "https://github.com/OCA/website",
-    'depends': ['product', 'website', 'stock'],
+    'depends': ['product', 'website'],
     'data': [
+        'security/ir.model.access.csv',
+        'security/website_product.xml',
         'views/website_product_templates.xml',
         'views/product_views.xml',
-        'security/website_product.xml',
-        'security/ir.model.access.csv',
     ],
     'installable': True,
     'auto_install': False,

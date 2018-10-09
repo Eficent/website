@@ -11,6 +11,7 @@ class TestController(SavepointCase):
 
     def setUp(cls, *args, **kwargs):
         super(TestController, cls).setUp(*args, **kwargs)
+        cls.env = cls.env(context=dict(cls.env.context, tracking_disable=True))
         cls.uom_unit = cls.env.ref('product.product_uom_unit')
 
         cls.product_sale_ok = cls.env['product.template'].create({
@@ -34,7 +35,6 @@ class TestController(SavepointCase):
 
     @patch('odoo.addons.website_product.'
            'controllers.main.request')
-    @patch('odoo.http.request')
     def test_request_product_sale_ok(self, request, request2):
         """Test controller for salable product"""
         # Mock
@@ -47,7 +47,6 @@ class TestController(SavepointCase):
 
     @patch('odoo.addons.website_product.'
            'controllers.main.request')
-    @patch('odoo.http.request')
     def test_request_product_no_sale(self, request, request2):
         """Test controller for not salable product"""
         # Mock
@@ -60,7 +59,6 @@ class TestController(SavepointCase):
 
     @patch('odoo.addons.website_product.'
            'controllers.main.request')
-    @patch('odoo.http.request')
     def test_request_no_product(self, request, request2):
         """Test controller for product_id not found"""
         # Mock
