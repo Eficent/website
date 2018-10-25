@@ -23,7 +23,7 @@ Website Product
     :target: https://runbot.odoo-community.org/runbot/186/11.0
     :alt: Try me on Runbot
 
-|badge1| |badge2| |badge3| |badge4| |badge5|
+|badge1| |badge2| |badge3| |badge4| |badge5| 
 
 This module extends the functionality of the website to support viewing
 a specific product that has been published, but it is not caught by website_sale
@@ -59,22 +59,33 @@ If you spotted it first, help us smashing it by providing a detailed and welcome
 
 Do not contact contributors directly about support or help with technical issues.
 
-*Manual changes will be overwritten.*
+Credits
+=======
 
-Please provide content in the ``readme`` directory:
+Authors
+~~~~~~~
 
-* **DESCRIPTION.rst** (required)
-* INSTALL.rst (optional)
-* CONFIGURE.rst (optional)
-* **USAGE.rst** (optional, highly recommended)
-* DEVELOP.rst (optional)
-* ROADMAP.rst (optional)
-* HISTORY.rst (optional, recommended)
-* **CONTRIBUTORS.rst** (optional, highly recommended)
-* CREDITS.rst (optional)
+* Eficent
 
-Content of this README will also be drawn from the addon manifest,
-from keys such as name, authors, maintainers, development_status,
-and license.
+Contributors
+~~~~~~~~~~~~
 
-A good, one sentence summary in the manifest is also highly recommended.
+* Jordi Ballester <jordi.ballester@eficent.com>
+* Héctor Villarreal <hector.villarreal@eficent.com>
+
+Maintainers
+~~~~~~~~~~~
+
+This module is maintained by the OCA.
+
+.. image:: https://odoo-community.org/logo.png
+   :alt: Odoo Community Association
+   :target: https://odoo-community.org
+
+OCA, or the Odoo Community Association, is a nonprofit organization whose
+mission is to support the collaborative development of Odoo features and
+promote its widespread use.
+
+This module is part of the `OCA/website <https://github.com/OCA/website/tree/11.0/website_product>`_ project on GitHub.
+
+You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.

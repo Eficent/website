@@ -10,7 +10,7 @@ class WebsiteProductPage(http.Controller):
     @http.route(['/product/<model("product.template"):product>'], type='http',
                 auth="public", website=True)
     def products_detail(self, product, **post):
-        if product.exists():
+        if isinstance(product, request.env['product.template'].__class__):
             if product.website_published or self._is_website_publisher():
                 values = {
                     'main_object': product,

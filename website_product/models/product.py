@@ -22,8 +22,6 @@ class ProductTemplate(models.Model):
         # Otherwise, use the defult URL from website_sale, which will
         # redirect the user to the shop.
         for product in self:
-            if product.sale_ok:
-                continue
             product.website_url = "/product/%s" % slug(product)
 
 
