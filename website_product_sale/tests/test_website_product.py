@@ -2,9 +2,7 @@
 #   (http://www.eficent.com)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from mock import patch
 from odoo.tests.common import SavepointCase
-from odoo.addons.website_product.controllers.main import WebsiteProductPage
 
 
 class TestController(SavepointCase):
@@ -19,6 +17,7 @@ class TestController(SavepointCase):
             'name': 'Product sale ok',
             'uom_id': cls.uom_unit.id,
             'uom_po_id': cls.uom_unit.id,
+            'website_published': True,
             'sale_ok': True,
         })
 
@@ -26,6 +25,7 @@ class TestController(SavepointCase):
             'name': 'Product no sale',
             'uom_id': cls.uom_unit.id,
             'uom_po_id': cls.uom_unit.id,
+            'website_published': True,
             'sale_ok': False,
         })
 
@@ -33,4 +33,3 @@ class TestController(SavepointCase):
         """Test website_url from product.templates if sellable or not."""
         self.assertFalse('/shop/' in self.product_no_sale.website_url)
         self.assertTrue('/shop/' in self.product_sale_ok.website_url)
-
