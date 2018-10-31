@@ -67,7 +67,7 @@
                                     </t>
                                 </td>
                                 <td class="prod-qty">
-                                    <span t-field="line.product_qty"/>
+                                    <span t-esc="round(line.product_qty,2)"/>
                                     <span groups="product.group_uom" t-field="line.product_uom_id.name"/>
                                 </td>
 
