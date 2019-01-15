@@ -13,16 +13,16 @@ class TestController(SavepointCase):
         cls.env = cls.env(context=dict(cls.env.context, tracking_disable=True))
         cls.uom_unit = cls.env.ref('product.product_uom_unit')
 
-        cls.product_sale_ok = cls.env['product.template'].create({
-            'name': 'Product sale ok',
+        cls.product_2_sale_ok = cls.env['product.template'].create({
+            'name': 'Product sale ok 2',
             'uom_id': cls.uom_unit.id,
             'uom_po_id': cls.uom_unit.id,
             'website_published': True,
             'sale_ok': True,
         })
 
-        cls.product_no_sale = cls.env['product.template'].create({
-            'name': 'Product no sale',
+        cls.product_2_no_sale = cls.env['product.template'].create({
+            'name': 'Product no sale 2',
             'uom_id': cls.uom_unit.id,
             'uom_po_id': cls.uom_unit.id,
             'website_published': True,
@@ -31,5 +31,5 @@ class TestController(SavepointCase):
 
     def test_compute_website_url(self):
         """Test website_url from product.templates if sellable or not."""
-        self.assertFalse('/shop/' in self.product_no_sale.website_url)
-        self.assertTrue('/shop/' in self.product_sale_ok.website_url)
+        self.assertFalse('/shop/' in self.product_2_no_sale.website_url)
+        self.assertTrue('/shop/' in self.product_2_sale_ok.website_url)

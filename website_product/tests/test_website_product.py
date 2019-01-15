@@ -32,7 +32,7 @@ class TestController(SavepointCase):
     def test_compute_website_url(self):
         """Test website_url from product.templates if sellable or not."""
         self.assertTrue('/product/' in self.product_no_sale.website_url)
-        self.assertFalse(self.product_sale_ok.website_url)
+        self.assertFalse('/shop/' in self.product_sale_ok.website_url)
 
     @patch('odoo.addons.website_product.'
            'controllers.main.request')
