@@ -13,7 +13,8 @@ class ProductTemplate(models.Model):
         # If the product cannot be sold, use website_product view.
         # Otherwise, use the default URL from website_sale, which will
         # redirect the user to the shop.
-        super(ProductTemplate, self)._compute_website_url()
         for product in self:
             if not product.sale_ok:
                 product.website_url = "/product/%s" % slug(product)
+            else:
+                product.website_url = "/shop/product/%s" % (product.id,)
