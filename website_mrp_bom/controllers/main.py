@@ -9,20 +9,19 @@ class WebsiteMrpBomPage(http.Controller):
 
     @http.route(['/components/<model("mrp.bom"):bom>'], type='http',
                 auth="public", website=True)
-    def boms_detail(self, bom, **post):
-        if isinstance(bom, request.env['mrp.bom'].__class__):
-            if bom.website_published or self._is_website_publisher(request):
-                values = {
-                    'main_object': bom,
-                    'bom': bom,
-                    'has_published_bom': self._has_published_bom(bom)
-                }
-                return request.render("website_mrp_bom.mrp_bom_page", values)
+    def boms_detail(self, bom=False, **post):
+        if bom and (
+                bom.website_published or self._is_website_publisher()):
+            values = {
+                'main_object': bom,
+                'bom': bom,
+                'has_published_bom': self._has_published_bom(bom)
+            }
+            return request.render("website_mrp_bom.mrp_bom_page", values)
         return request.not_found()
 
-    @staticmethod
-    def _is_website_publisher(request):
-        return request.env['res.users'].has_group(
+    def _is_website_publisher(self):
+        return self.env['res.users'].has_group(
             'website.group_website_publisher')
 
     @staticmethod
