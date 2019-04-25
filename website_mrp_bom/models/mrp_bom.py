@@ -28,3 +28,10 @@ class MrpBom(models.Model):
             pts = self.mapped('product_tmpl_id')
             pts.write({'website_published': values['website_published']})
         return rec
+
+    @api.multi
+    def unlink(self):
+        if self.website_published:
+            pts = self.mapped('product_tmpl_id')
+            pts.update({'website_published': False})
+        return super(MrpBom, self).unlink()
