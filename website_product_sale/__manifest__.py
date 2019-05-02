@@ -12,5 +12,5 @@
     'website': "https://github.com/OCA/website",
     'depends': ['website_product', 'website_sale'],
     'installable': True,
-    'auto_install': True,
+    'auto_install': False,
 }
