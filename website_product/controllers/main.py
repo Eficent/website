@@ -7,7 +7,7 @@ from odoo.http import request
 
 class WebsiteProductPage(http.Controller):
 
-    @http.route(['/product/<model("product.template"):product>'], type='http',
+    @http.route(['/catalog/product/<model("product.template"):product>'], type='http',
                 auth="public", website=True)
     def products_detail(self, product, **post):
         if isinstance(product, request.env['product.template'].__class__):

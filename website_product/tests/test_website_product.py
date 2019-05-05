@@ -32,7 +32,6 @@ class TestController(SavepointCase):
         """Test controller for not salable product"""
         # Mock
         request.env = self.env
-
         ctrl = WebsiteProductPage()
         response = ctrl.products_detail(self.product_no_sale)
         self.assertTrue('request.render()' in str(response.name))
