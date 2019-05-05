@@ -58,7 +58,7 @@
                                 </td>
                                 <td class="prod-name">
                                     <t t-if="line.sudo().product_id.product_tmpl_id.website_published">
-                                        <a t-att-href="line.sudo().product_id.product_tmpl_id.website_url" style="display: block">
+                                        <a t-att-href="line.sudo().product_id.product_tmpl_id.website_product_url" style="display: block">
                                             <span t-field="line.sudo().product_id.product_tmpl_id.name"/>
                                         </a>
                                     </t>

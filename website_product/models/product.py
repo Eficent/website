@@ -15,14 +15,16 @@ class ProductTemplate(models.Model):
     website_description = fields.Html('Description for the website',
                                       sanitize_attributes=False,
                                       translate=html_translate)
+    website_product_url = fields.Char(
+        'Website Product URL', compute='_compute_website_product_url')
+
+    website_product_published = fields.Boolean(
+        'Available on the Website catalogue', copy=False)
 
     @api.multi
-    def _compute_website_url(self):
-        # If the product cannot be sold, then use the new form view.
-        # Otherwise, use the defult URL from website_sale, which will
-        # redirect the user to the shop.
+    def _compute_website_product_url(self):
         for product in self:
-            product.website_url = "/product/%s" % slug(product)
+            product.website_product_url = "/catalog/product/%s" % slug(product)
 
 
 class ProductProduct(models.Model):

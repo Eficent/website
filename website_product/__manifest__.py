@@ -17,6 +17,7 @@
         'security/website_product.xml',
         'security/ir.model.access.csv',
     ],
+    'qweb': ['static/src/xml/website.product.backend.xml'],
     'installable': True,
     'auto_install': False,
 }
